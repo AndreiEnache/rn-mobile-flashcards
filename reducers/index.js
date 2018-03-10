@@ -3,10 +3,6 @@ import * as TYPES from '../types';
 
 function decksReducer(state = { decks: [] }, action) {
   const { question, decks, title } = action;
-  console.log(
-    'finding deck with question ',
-    state && state.decks && state.decks.filter(d => d.title === title),
-  );
   switch (action.type) {
     case TYPES.ADD_QUESTION_SUCCESS:
       return {
