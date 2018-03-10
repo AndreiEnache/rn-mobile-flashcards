@@ -58,6 +58,16 @@ class Quiz extends Component {
       }).start();
     }
   };
+  handleRestart = () => {
+    this.setState(() => ({
+      side: 'question',
+      questionIndex: 0,
+      correct: 0,
+    }));
+  };
+  handleBack = () => {
+    this.props.navigation.goBack(this.props.navigation.state.key);
+  };
   render() {
     const { deck } = this.props;
     const { questionIndex, side, correct } = this.state;
@@ -94,6 +104,18 @@ class Quiz extends Component {
         <View style={{ flex: 1 }}>
           <View style={styles.container}>
             <Text style={styles.title}>Your score was {`${correct}/${deck.questions.length}`}</Text>
+          </View>
+          <View style={[styles.buttons, { alignItems: 'center' }]}>
+            <Button
+              text="Restart Quiz"
+              style={{ backgroundColor: green, marginBottom: 10 }}
+              onPress={this.handleRestart}
+            />
+            <Button
+              text="Back to Deck"
+              style={{ backgroundColor: red }}
+              onPress={this.handleBack}
+            />
           </View>
         </View>
       );

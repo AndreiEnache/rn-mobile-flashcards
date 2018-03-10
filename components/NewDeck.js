@@ -31,7 +31,7 @@ class NewDeck extends React.Component {
     } else {
       this.setState(() => ({ title: '' }));
       await this.props.addDeck(title);
-      this.props.navigation.goBack(this.props.navigation.state.key);
+      this.props.navigation.navigate('SelectedDeck', { title });
     }
   };
   render() {
