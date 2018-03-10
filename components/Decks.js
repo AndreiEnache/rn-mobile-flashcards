@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
+import { StyleSheet, View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { receiveDecks } from '../actions';
 import DeckListItem from './DeckListItem';
-import * as api from '../utils/api';
 import { getDecks } from '../reducers';
 
 class Decks extends React.Component {
@@ -28,6 +28,20 @@ class Decks extends React.Component {
     );
   }
 }
+
+Decks.propTypes = {
+  receiveDecks: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+  decks: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    questions: PropTypes.arrayOf(PropTypes.shape({
+      question: PropTypes.string.isRequired,
+      answer: PropTypes.string.isRequired,
+    })).isRequired,
+  })).isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

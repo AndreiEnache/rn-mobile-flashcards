@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { getDeck } from '../reducers';
-import * as api from '../utils/api';
 import Button from './General/Button';
 import { white, gray } from '../utils/colors';
 
@@ -79,8 +78,16 @@ const styles = StyleSheet.create({
 });
 
 SelectedDeck.propTypes = {
-  title: PropTypes.string,
-  questions: PropTypes.arrayOf(PropTypes.shape({})),
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+  deck: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    questions: PropTypes.arrayOf(PropTypes.shape({
+      question: PropTypes.string.isRequired,
+      answer: PropTypes.string.isRequired,
+    })).isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => ({

@@ -131,7 +131,14 @@ class Quiz extends Component {
   }
 }
 
-Quiz.propTypes = {};
+Quiz.propTypes = {
+  deck: PropTypes.shape({
+    questions: PropTypes.arrayOf(PropTypes.shape({
+      answer: PropTypes.string.isRequired,
+      question: PropTypes.string.isRequired,
+    }).isRequired).isRequired,
+  }).isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

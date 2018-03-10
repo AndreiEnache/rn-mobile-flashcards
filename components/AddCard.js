@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { white } from '../utils/colors';
 import Input from './General/Input';
 import Button from './General/Button';
 import { addQuestion } from '../actions';
-import { getDeck } from '../reducers';
 
 class AddCard extends React.Component {
   static navigationOptions = () => ({ title: 'Add Card' });
@@ -42,6 +42,19 @@ class AddCard extends React.Component {
     );
   }
 }
+
+AddCard.propTypes = {
+  navigation: PropTypes.shape({
+    state: PropTypes.shape({
+      params: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+      key: PropTypes.string.isRequired,
+    }).isRequired,
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
+  addQuestion: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

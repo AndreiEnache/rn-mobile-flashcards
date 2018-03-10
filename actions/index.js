@@ -15,8 +15,6 @@ export const addDeck = title => async (dispatch) => {
 };
 export const addQuestion = (title, question) => async (dispatch) => {
   dispatch(addQuestionRequest());
-  console.log(title);
-  console.log(question);
   await api.addQuestionToDeck(title, question);
   dispatch(addQuestionSuccess(title, question));
 };

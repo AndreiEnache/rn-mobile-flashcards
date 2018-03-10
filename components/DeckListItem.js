@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { gray, black } from '../utils/colors';
 
 const DeckListItem = ({ item, onPress }) => (
@@ -16,6 +17,21 @@ const DeckListItem = ({ item, onPress }) => (
     </View>
   </TouchableOpacity>
 );
+
+DeckListItem.propTypes = {
+  item: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    questions: PropTypes.arrayOf(PropTypes.shape({
+      answer: PropTypes.string.isRequired,
+      question: PropTypes.string.isRequired,
+    })).isRequired,
+  }),
+  onPress: PropTypes.func,
+};
+
+DeckListItem.defaultProps = {
+  item: {},
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -40,14 +56,3 @@ const styles = StyleSheet.create({
 });
 
 export default DeckListItem;
-
-{
-  /* <Card title={item.name}>
-    <View>
-      <Text>Number of cards: {item.cards}</Text>
-      <Button text="Add more cards" />
-      <Button text="Play" />
-    </View>
-
-  </Card> */
-}

@@ -1,18 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  StyleSheet,
-  KeyboardAvoidingView,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-  Keyboard,
-} from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, Text, View, Keyboard } from 'react-native';
 import { connect } from 'react-redux';
 import Input from './General/Input';
 import Button from './General/Button';
-import * as api from '../utils/api';
 import { addDeck } from '../actions';
 import { getDeck } from '../reducers';
 
@@ -56,6 +47,13 @@ class NewDeck extends React.Component {
 
 NewDeck.propTypes = {
   addDeck: PropTypes.func.isRequired,
+  getDeckByTitle: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+    state: PropTypes.shape({
+      key: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 const styles = StyleSheet.create({
