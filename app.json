@@ -1,5 +1,20 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0"
+    "sdkVersion": "25.0.0",
+    "orientation": "portrait",
+    "name": "MobileFlashcards",
+    "description": "A flashcard app.",
+    "slug": "mobileflashcards",
+    "version": "1.0",
+    "icon": "https://png.icons8.com/ios/100/000000/flashcards.png",
+    "notification": {
+      "icon": "https://png.icons8.com/ios/100/000000/flashcards.png"
+    },
+    "ios": {
+      "bundleIdentifier": "org.mobileflashcards.exp"
+    },
+    "android": {
+      "package": "org.mobileflashcards.exp"
+    }
   }
 }

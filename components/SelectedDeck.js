@@ -19,7 +19,11 @@ class SelectedDeck extends Component {
   };
 
   handleStartQuiz = () => {
-    this.props.navigation.navigate('Quiz', { title: this.props.deck.title });
+    if (this.props.deck.questions.length === 0) {
+      alert("This quiz doesn't have any questions. Please add some questions first");
+    } else {
+      this.props.navigation.navigate('Quiz', { title: this.props.deck.title });
+    }
   };
 
   render() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Keyboard } from 'react-native';
 import { connect } from 'react-redux';
 import { white } from '../utils/colors';
 import Input from './General/Input';
@@ -20,6 +20,11 @@ class AddCard extends React.Component {
   };
   handleSubmit = async () => {
     const { title } = this.props.navigation.state.params;
+    Keyboard.dismiss();
+    this.setState(() => ({
+      question: '',
+      answer: '',
+    }));
     await this.props.addQuestion(title, this.state);
     this.props.navigation.goBack(this.props.navigation.state.key);
   };

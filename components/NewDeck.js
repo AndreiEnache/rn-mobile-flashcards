@@ -22,10 +22,14 @@ class NewDeck extends React.Component {
     let { title } = this.state;
     title = title.trim();
     const alreadyExists = !!this.props.getDeckByTitle(title);
+    // Keyboard.dismiss() has problems working with alerts... replace alerts?
+    setTimeout(() => {
+      Keyboard.dismiss();
+    }, 500);
     if (alreadyExists) {
       alert(`Deck ${title} already exists`);
     } else {
-      Keyboard.dismiss();
+      this.setState(() => ({ title: '' }));
       await this.props.addDeck(title);
       this.props.navigation.goBack(this.props.navigation.state.key);
     }
@@ -38,7 +42,6 @@ class NewDeck extends React.Component {
           <Text style={styles.mainText}>What is the title of your new deck?</Text>
         </View>
         <Input value={title} onTextChange={this.handleChange} placeholder="Deck title" />
-
         <Button onPress={this.handleSubmit} text="Submit" style={{ marginBottom: 86 }} />
       </KeyboardAvoidingView>
     );
