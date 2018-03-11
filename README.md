@@ -1,6 +1,6 @@
 # Flashcards
 
-A web application inspired by flashcards
+An ios/android application written in React-Native, inspired by flashcards
 
 ## Installation
 
